@@ -1,0 +1,22 @@
+.form-1{
+   display: flex;
+   align-items: center; 
+   justify-content: space-between;
+   flex-direction: column;
+   margin: 10% auto;
+   width: 20%;
+   height: 350px;
+   border: 1px solid black;
+}
+.form-1 h4{
+    position: relative;
+    bottom: 16px;
+    
+}
+.btn-1{
+    bottom: 120px;;
+    position: absolute;
+    left: 40%;
+    width: 20%;
+    padding: 10px 25rem;
+}
