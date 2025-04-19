@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "../../Components/Firebase/Firebase";
+import { authSlice } from "../../Store";
+import { useSelector } from "react-redux";
 
 const ReceivedMails = () => {
   const [receivedMails, setReceivedMails] = useState([]);
+  const email = useSelector((state)=> state.auth.email)
 
   useEffect(() => {
     const fetchReceivedMails = async () => {
-      const userEmail = "recipient@example.com"; // Replace with authenticated user's email
+      const userEmail = email; // Replace with authenticated user's email
       const q = query(collection(db, "mails_received"), where("to", "==", userEmail));
       const querySnapshot = await getDocs(q);
 
@@ -19,7 +22,7 @@ const ReceivedMails = () => {
     };
 
     fetchReceivedMails();
-  }, []);
+  }, [email]);
 
   return (
     <div>
